@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "john",
+      "age": 28,
+      "address": "los angles",
+      "gender": "male"
+    },
+    {
+      "id": 2,
+      "name": "matthew anderson",
+      "age": 30,
+      "address": "new york",
+      "gender": "male"
+    },
+    {
+      "name": "roy",
+      "age": "26",
+      "address": "los angeles",
+      "gender": "male",
+      "id": 5
+    }
+  ]
+}

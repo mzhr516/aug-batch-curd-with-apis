@@ -1,25 +1,18 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "john",
-      "age": 28,
-      "address": "los angles",
-      "gender": "male"
+      "name": "uzer uddin",
+      "age": "25",
+      "address": "mumbai",
+      "gender": "female",
+      "id": 2
     },
     {
-      "id": 2,
-      "name": "matthew anderson",
-      "age": 30,
-      "address": "new york",
-      "gender": "male"
-    },
-    {
-      "name": "roy",
-      "age": "26",
+      "name": "mazhar",
+      "age": "25",
       "address": "los angeles",
       "gender": "male",
-      "id": 5
+      "id": 3
     }
   ]
 }

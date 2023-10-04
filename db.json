@@ -1,18 +1,3 @@
 {
-  "users": [
-    {
-      "name": "uzer uddin",
-      "age": "25",
-      "address": "mumbai",
-      "gender": "female",
-      "id": 2
-    },
-    {
-      "name": "mazhar",
-      "age": "25",
-      "address": "los angeles",
-      "gender": "male",
-      "id": 3
-    }
-  ]
+  "users": []
 }

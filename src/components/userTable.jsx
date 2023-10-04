@@ -12,23 +12,40 @@ export const UserTable = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get("http://localhost:3000/users")
-      .then((responce) => {
-        setUsersData(responce.data);
+    // axios
+    //   .get("http://localhost:3000/users")
+    //   .then((responce) => {
+    //     setUsersData(responce.data);
+    //     setLoading(false);
+    //   })
+    //   .catch((error) => {
+    //     alert(error);
+    //   });
+
+    const getData = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/users");
+        console.log(res);
+        setUsersData(res.data);
         setLoading(false);
-      })
-      .catch((error) => {
-        alert(error);
-      });
+      } catch {
+        alert("something went wrong");
+      }
+    };
+    getData();
   }, [refetch]);
 
-  const onDelete = (id) => {
-    axios.delete(`http://localhost:3000/users/${id}`).then((res) => {
-      if (res) {
-        setRefetch(!refetch);
-      }
-    });
+  const onDelete = async (id) => {
+    // axios.delete(`http://localhost:3000/users/${id}`).then((res) => {
+    //   if (res) {
+    //     setRefetch(!refetch);
+    //   }
+    // });
+
+    const res = await axios.delete(`http://localhost:3000/users/${id}`);
+    if (res) {
+      setRefetch(!refetch);
+    }
   };
 
   const onEdit = (user) => {
@@ -36,17 +53,30 @@ export const UserTable = () => {
     reset(user);
   };
 
-  const submit = (data) => {
+  const submit = async (data) => {
     console.log(data);
-    axios
-      .put(`http://localhost:3000/users/${editUser.id}`, data)
-      .then((res)=>{
-        if(res){
-            setEditUser({})
-            setRefetch(!refetch)
-        }
-      })
-      .catch();
+    // axios
+    //   .put(`http://localhost:3000/users/${editUser.id}`, data)
+    //   .then((res) => {
+    //     if (res) {
+    //       setEditUser({});
+    //       setRefetch(!refetch);
+    //     }
+    //   })
+    //   .catch((error)=>alert(error));
+
+    try {
+      const responce = await axios.put(
+        `http://localhost:3000/users/${editUser.id}`,
+        data
+      );
+      if (responce) {
+        setEditUser({});
+        setRefetch(!refetch);
+      }
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
@@ -68,6 +98,7 @@ export const UserTable = () => {
             {usersData.map((user, index) => {
               if (user.id === editUser.id) {
                 return (
+                  // edit row
                   <tr>
                     <td>{index + 1}</td>
                     <td colSpan="5">
@@ -81,10 +112,7 @@ export const UserTable = () => {
                         <td>
                           <input type="text" {...register("address")} />
                         </td>
-                       
-                        {/* <td>
-                          <input type="text" />
-                        </td> */}
+
                         <td>
                           <Button onClick={() => setEditUser({})}>
                             cancel
@@ -98,6 +126,7 @@ export const UserTable = () => {
                 );
               } else {
                 return (
+                  // view row
                   <tr>
                     <td>{index + 1}</td>
                     <td>
